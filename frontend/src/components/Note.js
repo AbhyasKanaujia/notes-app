@@ -24,13 +24,14 @@ const Note = ({ id, title, content }) => {
 
   const extra = (
     <Button.Group floated="right">
-      <Button as={Link} to={`/edit/${id}`} icon="pencil" basic />
+      <Button as={Link} to={`/edit/${id}`} icon="pencil" size="tiny" basic />
       <Transition visible={!deleted} unmountOnHide>
         <Popup
           trigger={<Button icon="trash" basic />}
           on="click"
           content={
             <Button
+              size="tiny"
               loading={deleting}
               content="Delete"
               negative
@@ -45,17 +46,27 @@ const Note = ({ id, title, content }) => {
   const getNoteCard = () => {
     return (
       <Transition visible={!deleted} unmountOnHide>
-        <Modal
-          onClose={() => setOpen(false)}
-          onOpen={() => setOpen(true)}
-          trigger={<Card header={title} description={content} extra={extra} />}
-          header={title}
-          content={content}
-          actions={[
-            { content: "Edit" },
-            { content: "Delete", negative: true, onClick: () => deleteNote() },
-          ]}
-        />
+        <Card>
+          <Card.Content>
+            <Modal
+              onClose={() => setOpen(false)}
+              onOpen={() => setOpen(true)}
+              trigger={<Card.Header>{title}</Card.Header>}
+              header={title}
+              content={content}
+              actions={[
+                { content: "Edit" },
+                {
+                  content: "Delete",
+                  negative: true,
+                  onClick: () => deleteNote(),
+                },
+              ]}
+            />
+            <Card.Content>{content}</Card.Content>
+            <Card.Content>{extra}</Card.Content>
+          </Card.Content>
+        </Card>
       </Transition>
     );
   };
