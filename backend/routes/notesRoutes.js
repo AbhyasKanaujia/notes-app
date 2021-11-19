@@ -59,7 +59,7 @@ router.delete(
     Note.findByIdAndDelete(req.params.id, (error, note) => {
       if (error) res.status(500).json({ message: error.message });
       const response = {
-        message: `Note with id ${note._id} successfully deleted`,
+        message: `Note with id ${req.params.id} successfully deleted`,
         id: note._id,
       };
       res.json(response);
