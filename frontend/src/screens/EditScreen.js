@@ -33,8 +33,8 @@ const EditScreen = () => {
       try {
         const response = await axios.get(`/api/notes/${id}`);
         setNote(response.data);
-      } catch (err) {
-        setError(err);
+      } catch (error) {
+        setError(error);
       }
     };
 

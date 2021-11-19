@@ -12,8 +12,8 @@ const HomeScreen = () => {
     try {
       const response = await axios.get("/api/notes");
       setNotes(response.data);
-    } catch (err) {
-      setError(err);
+    } catch (error) {
+      setError(error);
     }
   };
 

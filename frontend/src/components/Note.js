@@ -51,7 +51,9 @@ const Note = ({ id, title, content }) => {
             <Modal
               onClose={() => setOpen(false)}
               onOpen={() => setOpen(true)}
-              trigger={<Card.Header>{title}</Card.Header>}
+              trigger={
+                <Card.Header style={{ cursor: "pointer" }}>{title}</Card.Header>
+              }
               header={title}
               content={content}
               actions={[

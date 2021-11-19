@@ -31,8 +31,8 @@ router.post(
   "/",
   asyncHandler(async (req, res) => {
     const newNote = new Note(req.body);
-    newNote.save((err) => {
-      if (err) res.status(500).json({ message: error.message });
+    newNote.save((error) => {
+      if (error) res.status(500).json({ message: error.message });
       res.json(newNote);
     });
   })
@@ -45,8 +45,8 @@ router.put(
       req.params.id,
       req.body,
       { new: true },
-      (err, note) => {
-        if (err) res.status(500).json({ message: err.message });
+      (error, note) => {
+        if (error) res.status(500).json({ message: error.message });
         res.json(note);
       }
     );
@@ -56,8 +56,8 @@ router.put(
 router.delete(
   "/:id",
   asyncHandler(async (req, res) => {
-    Note.findByIdAndDelete(req.params.id, (err, note) => {
-      if (err) res.status(500).json({ message: error.message });
+    Note.findByIdAndDelete(req.params.id, (error, note) => {
+      if (error) res.status(500).json({ message: error.message });
       const response = {
         message: `Note with id ${note._id} successfully deleted`,
         id: note._id,
