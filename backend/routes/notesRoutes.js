@@ -10,7 +10,7 @@ router.use(express.json());
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    const notes = await Note.find({});
+    const notes = await Note.find({}, null, { sort: { updatedAt: -1 } });
     res.json(notes);
   })
 );
