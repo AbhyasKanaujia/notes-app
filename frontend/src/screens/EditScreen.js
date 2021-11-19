@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Form, Container, Loader } from "semantic-ui-react";
 import ErrorView from "../components/ErrorView";
+import { useNavigate } from "react-router-dom";
 
 const EditScreen = () => {
   const [note, setNote] = useState(null);
@@ -11,6 +12,8 @@ const EditScreen = () => {
   const [changed, setChanged] = useState(false);
   const [updating, setUpdating] = useState(false);
   const [lineCount, setLineCount] = useState();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     note && setLineCount(note.content.split("\n").length);
@@ -22,6 +25,7 @@ const EditScreen = () => {
       await axios.put(`/api/notes/${id}`, note).then(() => {
         setUpdating(false);
         setChanged(false);
+        navigate("/");
       });
     } catch (error) {
       setError(error);
