@@ -18,7 +18,7 @@ const CreateScreen = () => {
       await axios.post("/api/notes", note).then((response) => {
         setCreating(false);
         setChanged(false);
-        navigate(`/edit/${response.data._id}`);
+        navigate(`/`);
       });
     } catch (error) {
       setError(error);
