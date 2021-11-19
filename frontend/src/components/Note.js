@@ -48,23 +48,37 @@ const Note = ({ id, title, content }) => {
       <Transition visible={!deleted} unmountOnHide>
         <Card>
           <Card.Content>
-            <Modal
-              onClose={() => setOpen(false)}
-              onOpen={() => setOpen(true)}
-              trigger={
-                <Card.Header style={{ cursor: "pointer" }}>{title}</Card.Header>
-              }
-              header={title}
-              content={content}
-              actions={[
-                { content: "Edit" },
-                {
-                  content: "Delete",
-                  negative: true,
-                  onClick: () => deleteNote(),
-                },
-              ]}
-            />
+            <Transition visible={!deleted} unmountOnHide>
+              <Modal
+                onClose={() => setOpen(false)}
+                onOpen={() => setOpen(true)}
+                trigger={
+                  <Card.Header style={{ cursor: "pointer" }}>
+                    {title}
+                  </Card.Header>
+                }
+                header={title}
+                content={content}
+                actions={[
+                  { icon: "pencil", basic: true },
+                  <Transition visible={!deleted} unmountOnHide>
+                    <Popup
+                      trigger={<Button icon="trash" basic negative />}
+                      on="click"
+                      content={
+                        <Button
+                          size="tiny"
+                          loading={deleting}
+                          content="Delete"
+                          negative
+                          onClick={() => deleteNote()}
+                        />
+                      }
+                    />
+                  </Transition>,
+                ]}
+              />
+            </Transition>
             <Card.Content>{content}</Card.Content>
             <Card.Content>{extra}</Card.Content>
           </Card.Content>
