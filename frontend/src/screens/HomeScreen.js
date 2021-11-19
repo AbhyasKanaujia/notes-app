@@ -60,7 +60,34 @@ const HomeScreen = () => {
       );
     }
   };
-  return <>{error ? getErrorView() : getNotesList()}</>;
+
+  const emptyView = () => {
+    return (
+      <Container text>
+        <Message
+          header="Nothing to show yet"
+          content="Let's create a new note!"
+          attached="top"
+        />
+        <Button
+          as={Link}
+          to={"/create"}
+          content="Create Note"
+          primary
+          attached="bottom"
+        />
+      </Container>
+    );
+  };
+  return (
+    <>
+      {error
+        ? getErrorView()
+        : notes?.length === 0
+        ? emptyView()
+        : getNotesList()}
+    </>
+  );
 };
 
 export default HomeScreen;
