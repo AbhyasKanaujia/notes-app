@@ -9,7 +9,9 @@ const HomeScreen = () => {
   const [error, setError] = useState(null);
 
   const unListNote = (id) => {
-    setNotes(notes.filter((note) => note._id !== id));
+    new Promise((resolve) => setTimeout(resolve, 1000)).then(() =>
+      setNotes(notes.filter((note) => note._id !== id))
+    );
   };
 
   const fetchData = async () => {
