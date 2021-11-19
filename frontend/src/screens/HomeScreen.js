@@ -8,6 +8,10 @@ const HomeScreen = () => {
   const [notes, setNotes] = useState(null);
   const [error, setError] = useState(null);
 
+  const unListNote = (id) => {
+    setNotes(notes.filter((note) => note._id !== id));
+  };
+
   const fetchData = async () => {
     try {
       const response = await axios.get("/api/notes");
@@ -36,7 +40,7 @@ const HomeScreen = () => {
       </Container>
     );
   };
-  const getNotesList = () => {
+  const getNotesView = () => {
     if (notes) {
       return (
         <Container>
@@ -47,6 +51,7 @@ const HomeScreen = () => {
                 id={note._id}
                 title={note.title}
                 content={note.content}
+                unListNote={unListNote}
               />
             ))}
           </Card.Group>
@@ -79,13 +84,14 @@ const HomeScreen = () => {
       </Container>
     );
   };
+
   return (
     <>
       {error
         ? getErrorView()
         : notes?.length === 0
         ? emptyView()
-        : getNotesList()}
+        : getNotesView()}
     </>
   );
 };

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import ErrorView from "./ErrorView";
 
-const Note = ({ id, title, content }) => {
+const Note = ({ id, title, content, unListNote }) => {
   const [error, setError] = useState(null);
   const [deleted, setDeleted] = useState(false);
   const [deleting, setDeleting] = useState(false);
@@ -16,6 +16,7 @@ const Note = ({ id, title, content }) => {
       await axios.delete(`/api/notes/${id}`).then(() => {
         setDeleted(true);
         setDeleting(false);
+        unListNote(id);
       });
     } catch (error) {
       setError(error);
