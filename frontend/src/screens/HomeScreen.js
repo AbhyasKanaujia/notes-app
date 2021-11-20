@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Button, Card, Container, Loader, Message } from "semantic-ui-react";
+import {
+  Button,
+  Card,
+  Container,
+  Grid,
+  Header,
+  Loader,
+  Message,
+} from "semantic-ui-react";
 import Note from "../components/Note";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -70,20 +78,15 @@ const HomeScreen = () => {
 
   const emptyView = () => {
     return (
-      <Container text>
-        <Message
-          header="Nothing to show yet"
-          content="Let's create a new note!"
-          attached="top"
-        />
-        <Button
-          as={Link}
-          to={"/create"}
-          content="Create Note"
-          primary
-          attached="bottom"
-        />
-      </Container>
+      <Grid verticalAlign="top">
+        <Grid.Column>
+          <Container>
+            <Header as="h1" content="Nothing to show yet" />
+            <p>Let's create a new note!</p>
+            <Button as={Link} to={"/create"} content="Create Note" primary />
+          </Container>
+        </Grid.Column>
+      </Grid>
     );
   };
 
