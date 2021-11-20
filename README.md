@@ -1,5 +1,7 @@
 # Notes app
 
+[Start Using Now](https://notes-app-abhyas.herokuapp.com)
+
 ## Technologies used
 
 1. React.js
@@ -41,6 +43,8 @@
 
 1. Show cards in pinterest style **mason grid**.
 
+[Try It Out](https://notes-app-abhyas.herokuapp.com)
+
 ## Build locally
 
 1. Clone the project in your system
@@ -58,3 +62,5 @@ NODE_ENV=development
 MONGO_URI=<Mongo DB URI>
 
 ```
+
+[Live Demo of the app](https://notes-app-abhyas.herokuapp.com)
