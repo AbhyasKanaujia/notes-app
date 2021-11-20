@@ -17,6 +17,7 @@
 2. **See** notes
 3. **Edit** notes
 4. **Delete** notes
+5. Full **Markdown** support
 
 ### UI
 
