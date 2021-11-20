@@ -3,6 +3,7 @@ import { Button, Card, Modal, Popup, Transition } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import ErrorView from "./ErrorView";
+import ReactMarkdown from "react-markdown";
 
 const Note = ({ id, title, content, unListNote }) => {
   const [error, setError] = useState(null);
@@ -59,7 +60,7 @@ const Note = ({ id, title, content, unListNote }) => {
                   </Card.Header>
                 }
                 header={title}
-                content={content}
+                content={<ReactMarkdown>{content}</ReactMarkdown>}
                 actions={[
                   { icon: "pencil", basic: true },
                   <Transition visible={!deleted} unmountOnHide>
@@ -80,7 +81,9 @@ const Note = ({ id, title, content, unListNote }) => {
                 ]}
               />
             </Transition>
-            <Card.Content>{content}</Card.Content>
+            <Card.Content>
+              <ReactMarkdown>{content}</ReactMarkdown>
+            </Card.Content>
             <Card.Content>{extra}</Card.Content>
           </Card.Content>
         </Card>
