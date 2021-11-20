@@ -4,11 +4,11 @@
 
 ## Technologies used
 
-1. React.js
-2. Node.js
-3. Express.js
-4. MongoDB Atlas
-5. Mongoose
+1. **React.js**
+2. **Express.js**
+3. **Mongoose**
+4. Node.js
+5. MongoDB Atlas
 6. Semantic UI React
 
 ## Features
