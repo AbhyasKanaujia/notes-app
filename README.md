@@ -11,9 +11,10 @@
 
 ## Features
 
-1. Create notes with title and content
-2. See notes
-3. Spinner loading screen while content loads
+1. **Create** notes with title and content
+2. **See** notes
+3. **Edit** notes
+4. **Delete** notes
 
 ### UI
 
@@ -21,6 +22,7 @@
 2. The notes are shown in beautiful **cards** on the notes screen.
 3. Delete button shows a **pop up confirmation**.
 4. Cards are displayed in a **modal** when clicked on title in the notes screen.
+5. Spinner **loading screen** while content loads
 
 ### Animations
 
@@ -30,9 +32,10 @@
 
 ## Wishlist
 
-### Features wishlist
+### Feature wishlist
 
 1. Let user **authenticate** themselves.
+2. **Search** notes
 
 ### UI Wishlist
 
